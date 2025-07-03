@@ -73,8 +73,10 @@
     }
 
     .btn {
-      display: inline-block;
-      padding: 10px 20px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 24px;
       border-radius: var(--border-radius);
       font-weight: 500;
       transition: var(--transition);
@@ -82,17 +84,25 @@
       cursor: pointer;
       text-align: center;
       font-size: 0.95rem;
+      gap: 8px;
+      position: relative;
+      overflow: hidden;
     }
 
     .btn-primary {
       background-color: var(--accent);
       color: var(--primary);
+      box-shadow: 0 4px 6px rgba(202, 167, 96, 0.2);
     }
 
     .btn-primary:hover {
       background-color: var(--accent-dark);
       transform: translateY(-2px);
-      box-shadow: var(--shadow-sm);
+      box-shadow: 0 6px 12px rgba(202, 167, 96, 0.3);
+    }
+
+    .btn-primary:active {
+      transform: translateY(0);
     }
 
     .btn-outline {
@@ -104,6 +114,7 @@
     .btn-outline:hover {
       background-color: var(--accent);
       color: var(--primary);
+      box-shadow: 0 4px 6px rgba(202, 167, 96, 0.2);
     }
 
     /* Header Styles */
@@ -119,6 +130,11 @@
       transition: var(--transition);
     }
 
+    .header.scrolled {
+      padding: 10px 0;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
     .header-container {
       display: flex;
       justify-content: space-between;
@@ -129,22 +145,38 @@
       display: flex;
       align-items: center;
       gap: 10px;
+      transition: var(--transition);
+    }
+
+    .header.scrolled .logo-container {
+      transform: scale(0.95);
     }
 
     .logo-container img {
       width: 40px;
       height: 40px;
       object-fit: contain;
+      transition: var(--transition);
     }
 
     .logo-text h1 {
       font-size: 1.2rem;
       margin-bottom: 3px;
+      transition: var(--transition);
     }
 
     .logo-text p {
       font-size: 0.7rem;
       opacity: 0.8;
+      transition: var(--transition);
+    }
+
+    .header.scrolled .logo-text h1 {
+      font-size: 1.1rem;
+    }
+
+    .header.scrolled .logo-text p {
+      font-size: 0.65rem;
     }
 
     nav {
@@ -155,15 +187,16 @@
 
     .nav-links {
       display: flex;
-      gap: 10px;
+      gap: 15px;
     }
 
     .nav-links a {
       font-weight: 500;
       font-size: 0.9rem;
-      padding: 6px 10px;
+      padding: 8px 12px;
       border-radius: var(--border-radius);
       position: relative;
+      transition: var(--transition);
     }
 
     .nav-links a::after {
@@ -176,6 +209,10 @@
       height: 2px;
       background-color: var(--accent);
       transition: var(--transition);
+    }
+
+    .nav-links a:hover {
+      background-color: rgba(255, 255, 255, 0.1);
     }
 
     .nav-links a:hover::after {
@@ -194,13 +231,18 @@
       font-size: 1.5rem;
       cursor: pointer;
       padding: 5px;
+      transition: var(--transition);
+    }
+
+    .mobile-menu-btn:hover {
+      color: var(--accent);
     }
 
     /* Hero Section */
     .hero {
       background: linear-gradient(135deg, var(--primary), var(--primary-light));
       color: white;
-      padding: 80px 0 70px;
+      padding: 100px 0 80px;
       position: relative;
       overflow: hidden;
     }
@@ -226,22 +268,23 @@
     }
 
     .hero h2 {
-      font-size: 1.8rem;
+      font-size: 2rem;
       margin-bottom: 15px;
       animation: fadeInUp 0.8s ease-out;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
 
     .hero p {
-      font-size: 1rem;
+      font-size: 1.1rem;
       opacity: 0.9;
-      margin-bottom: 25px;
+      margin-bottom: 30px;
       animation: fadeInUp 0.8s ease-out 0.2s forwards;
       opacity: 0;
     }
 
     .hero-btns {
       display: flex;
-      gap: 12px;
+      gap: 15px;
       justify-content: center;
       animation: fadeInUp 0.8s ease-out 0.4s forwards;
       opacity: 0;
@@ -254,12 +297,18 @@
       max-width: 1000px;
       margin: -40px auto 40px;
       border-radius: var(--border-radius-lg);
-      padding: 20px;
+      padding: 25px;
       position: relative;
       z-index: 10;
       transform: scale(0.95);
       animation: pop 0.6s ease-out forwards;
       border-left: 5px solid var(--accent);
+      transition: var(--transition);
+    }
+
+    .highlight:hover {
+      transform: translateY(-5px) scale(1);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
     }
 
     .highlight h3 {
@@ -268,7 +317,7 @@
       display: flex;
       align-items: center;
       gap: 8px;
-      font-size: 1.1rem;
+      font-size: 1.2rem;
     }
 
     .highlight h3 i {
@@ -276,20 +325,21 @@
     }
 
     .highlight p {
-      font-size: 0.95rem;
+      font-size: 1rem;
+      line-height: 1.7;
     }
 
     /* Section Styles */
     .section {
-      padding: 60px 0;
+      padding: 80px 0;
     }
 
     .section-title {
-      font-size: 1.5rem;
+      font-size: 1.8rem;
       color: var(--primary);
       margin-bottom: 30px;
       position: relative;
-      padding-left: 15px;
+      padding-left: 20px;
     }
 
     .section-title::before {
@@ -298,29 +348,30 @@
       left: 0;
       top: 0;
       height: 100%;
-      width: 4px;
+      width: 5px;
       background-color: var(--accent);
       border-radius: 5px;
     }
 
     .section-subtitle {
       color: var(--text-light);
-      font-size: 1rem;
+      font-size: 1.1rem;
       max-width: 700px;
-      margin-bottom: 30px;
+      margin-bottom: 40px;
+      line-height: 1.7;
     }
 
     /* Cards Grid */
     .cards {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
     }
 
     .card {
       background-color: var(--card);
       border-radius: var(--border-radius-lg);
-      padding: 25px;
+      padding: 30px;
       box-shadow: var(--shadow-sm);
       transition: var(--transition);
       transform: translateY(20px);
@@ -329,6 +380,9 @@
       border-top: 4px solid var(--accent);
       position: relative;
       overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
     }
 
     .card::before {
@@ -353,26 +407,32 @@
     .card:nth-child(4) { animation-delay: 0.4s; }
 
     .card:hover {
-      transform: translateY(-5px);
+      transform: translateY(-10px);
       box-shadow: var(--shadow-lg);
     }
 
     .card-icon {
-      font-size: 1.8rem;
+      font-size: 2.2rem;
       color: var(--accent);
-      margin-bottom: 15px;
+      margin-bottom: 20px;
+      transition: var(--transition);
+    }
+
+    .card:hover .card-icon {
+      transform: scale(1.1);
     }
 
     .card h3 {
-      font-size: 1.1rem;
+      font-size: 1.3rem;
       color: var(--primary);
-      margin-bottom: 12px;
+      margin-bottom: 15px;
     }
 
     .card p {
       color: var(--text-light);
-      margin-bottom: 15px;
-      font-size: 0.9rem;
+      margin-bottom: 20px;
+      font-size: 1rem;
+      flex-grow: 1;
     }
 
     .card-link {
@@ -380,23 +440,30 @@
       align-items: center;
       color: var(--accent);
       font-weight: 500;
-      gap: 5px;
-      font-size: 0.9rem;
+      gap: 8px;
+      font-size: 1rem;
+      transition: var(--transition);
+      align-self: flex-start;
+      padding: 6px 0;
     }
 
     .card-link i {
       transition: var(--transition);
-      font-size: 0.8rem;
+      font-size: 0.9rem;
+    }
+
+    .card-link:hover {
+      color: var(--accent-dark);
     }
 
     .card-link:hover i {
-      transform: translateX(3px);
+      transform: translateX(5px);
     }
 
     /* Sambutan Section */
     .sambutan {
       background-color: var(--card);
-      padding: 60px 0;
+      padding: 80px 0;
       position: relative;
     }
 
@@ -414,18 +481,24 @@
     .sambutan-container {
       display: flex;
       align-items: center;
-      gap: 30px;
+      gap: 40px;
       position: relative;
       z-index: 1;
     }
 
     .sambutan-img {
       flex: 1;
-      max-width: 300px;
+      max-width: 350px;
       border-radius: var(--border-radius-lg);
       overflow: hidden;
       box-shadow: var(--shadow-lg);
       animation: fadeInLeft 0.8s ease-out;
+      transition: var(--transition);
+    }
+
+    .sambutan-img:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
     }
 
     .sambutan-img img {
@@ -435,7 +508,7 @@
     }
 
     .sambutan-img:hover img {
-      transform: scale(1.03);
+      transform: scale(1.05);
     }
 
     .sambutan-text {
@@ -444,9 +517,9 @@
     }
 
     .sambutan-text h3 {
-      font-size: 1.5rem;
+      font-size: 1.8rem;
       color: var(--primary);
-      margin-bottom: 15px;
+      margin-bottom: 20px;
       position: relative;
       display: inline-block;
     }
@@ -455,55 +528,68 @@
       content: '';
       position: absolute;
       left: 0;
-      bottom: -8px;
-      width: 50px;
-      height: 3px;
+      bottom: -10px;
+      width: 60px;
+      height: 4px;
       background-color: var(--accent);
       border-radius: 2px;
     }
 
     .sambutan-text p {
-      margin-bottom: 20px;
+      margin-bottom: 25px;
       text-align: justify;
-      font-size: 0.95rem;
+      font-size: 1.05rem;
+      line-height: 1.8;
     }
 
     .sambutan-signature {
       display: flex;
       flex-direction: column;
-      margin-top: 25px;
+      margin-top: 30px;
     }
 
     .sambutan-signature strong {
-      font-size: 1rem;
+      font-size: 1.1rem;
       color: var(--primary);
       margin-bottom: 5px;
+      font-weight: 600;
     }
 
     .sambutan-signature span {
       color: var(--text-light);
-      font-size: 0.85rem;
+      font-size: 0.9rem;
     }
 
     /* Footer */
     footer {
       background-color: var(--primary);
       color: white;
-      padding: 50px 0 25px;
+      padding: 60px 0 30px;
+      position: relative;
+    }
+
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 10px;
+      background: linear-gradient(to right, var(--accent), var(--primary-light));
     }
 
     .footer-container {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 30px;
-      margin-bottom: 40px;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      margin-bottom: 50px;
     }
 
     .footer-col h4 {
-      font-size: 1.1rem;
-      margin-bottom: 15px;
+      font-size: 1.2rem;
+      margin-bottom: 20px;
       position: relative;
-      padding-bottom: 8px;
+      padding-bottom: 10px;
     }
 
     .footer-col h4::after {
@@ -511,19 +597,20 @@
       position: absolute;
       left: 0;
       bottom: 0;
-      width: 35px;
-      height: 2px;
+      width: 40px;
+      height: 3px;
       background-color: var(--accent);
     }
 
     .footer-col p {
       opacity: 0.8;
-      margin-bottom: 12px;
-      font-size: 0.9rem;
+      margin-bottom: 15px;
+      font-size: 0.95rem;
+      line-height: 1.7;
     }
 
     .footer-links li {
-      margin-bottom: 10px;
+      margin-bottom: 12px;
     }
 
     .footer-links a {
@@ -531,8 +618,8 @@
       transition: var(--transition);
       display: flex;
       align-items: center;
-      gap: 8px;
-      font-size: 0.9rem;
+      gap: 10px;
+      font-size: 0.95rem;
     }
 
     .footer-links a:hover {
@@ -542,61 +629,66 @@
     }
 
     .footer-links i {
-      font-size: 0.7rem;
+      font-size: 0.8rem;
+      color: var(--accent);
+      width: 16px;
+      text-align: center;
     }
 
     .social-links {
       display: flex;
-      gap: 12px;
-      margin-top: 15px;
+      gap: 15px;
+      margin-top: 20px;
     }
 
     .social-links a {
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 32px;
-      height: 32px;
+      width: 38px;
+      height: 38px;
       border-radius: 50%;
       background-color: rgba(255, 255, 255, 0.1);
       transition: var(--transition);
-      font-size: 0.9rem;
+      font-size: 1rem;
     }
 
     .social-links a:hover {
       background-color: var(--accent);
       color: var(--primary);
-      transform: translateY(-3px);
+      transform: translateY(-5px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
 
     .footer-bottom {
       text-align: center;
-      padding-top: 25px;
+      padding-top: 30px;
       border-top: 1px solid rgba(255, 255, 255, 0.1);
-      font-size: 0.85rem;
+      font-size: 0.9rem;
       opacity: 0.7;
     }
 
     /* Back to Top Button */
     .to-top {
       position: fixed;
-      bottom: 20px;
-      right: 20px;
+      bottom: 30px;
+      right: 30px;
       background-color: var(--accent);
       color: var(--primary);
-      width: 45px;
-      height: 45px;
+      width: 50px;
+      height: 50px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       box-shadow: var(--shadow-md);
       cursor: pointer;
       opacity: 0;
       visibility: hidden;
       transition: var(--transition);
       z-index: 999;
+      border: none;
     }
 
     .to-top.active {
@@ -605,7 +697,7 @@
     }
 
     .to-top:hover {
-      transform: translateY(-5px);
+      transform: translateY(-5px) scale(1.1);
       box-shadow: var(--shadow-lg);
     }
 
@@ -655,7 +747,70 @@
       }
     }
 
+    /* Loading Animation */
+    .loading {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: var(--primary);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      transition: opacity 0.5s ease-out;
+    }
+
+    .loading-logo {
+      width: 80px;
+      height: 80px;
+      margin-bottom: 20px;
+      animation: pulse 1.5s infinite ease-in-out;
+    }
+
+    .loading-bar {
+      width: 200px;
+      height: 4px;
+      background-color: rgba(255, 255, 255, 0.2);
+      border-radius: 2px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .loading-progress {
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 0;
+      background-color: var(--accent);
+      transition: width 0.3s ease;
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+        opacity: 1;
+      }
+      50% {
+        transform: scale(1.1);
+        opacity: 0.8;
+      }
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
     /* Responsive Styles */
+    @media (max-width: 1200px) {
+      .container {
+        max-width: 1000px;
+      }
+    }
+
     @media (max-width: 992px) {
       .sambutan-container {
         flex-direction: column;
@@ -674,8 +829,8 @@
         transform: translateX(-50%);
       }
       
-      .sambutan-text p {
-        text-align: left;
+      .section {
+        padding: 70px 0;
       }
     }
 
@@ -689,7 +844,7 @@
         background-color: var(--primary-light);
         flex-direction: column;
         align-items: center;
-        padding: 30px 20px;
+        padding: 40px 20px;
         transition: var(--transition);
         z-index: 999;
       }
@@ -703,11 +858,11 @@
       }
       
       .hero h2 {
-        font-size: 1.6rem;
+        font-size: 1.8rem;
       }
       
       .hero p {
-        font-size: 0.95rem;
+        font-size: 1rem;
       }
       
       .hero-btns {
@@ -717,63 +872,83 @@
       
       .btn {
         width: 100%;
-        max-width: 220px;
+        max-width: 250px;
       }
       
       .cards {
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 20px;
+      }
+      
+      .highlight {
+        margin: -30px auto 30px;
+        padding: 20px;
+      }
+      
+      .footer-container {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 30px;
       }
     }
 
     @media (max-width: 576px) {
       .section {
-        padding: 50px 0;
+        padding: 60px 0;
       }
       
       .section-title {
-        font-size: 1.3rem;
+        font-size: 1.5rem;
         margin-bottom: 25px;
+        padding-left: 15px;
       }
       
       .section-subtitle {
-        font-size: 0.95rem;
-        margin-bottom: 25px;
-      }
-      
-      .highlight {
-        margin: -30px auto 30px;
-        padding: 15px;
-      }
-      
-      .highlight h3 {
         font-size: 1rem;
-      }
-      
-      .highlight p {
-        font-size: 0.9rem;
-      }
-      
-      .footer-container {
-        grid-template-columns: 1fr;
-        gap: 25px;
-      }
-      
-      .sambutan-text h3 {
-        font-size: 1.3rem;
+        margin-bottom: 30px;
       }
       
       .hero {
-        padding: 70px 0 60px;
+        padding: 80px 0 60px;
       }
       
-      .logo-text h1 {
-        font-size: 1.1rem;
+      .hero h2 {
+        font-size: 1.6rem;
+      }
+      
+      .hero p {
+        font-size: 0.95rem;
+      }
+      
+      .card {
+        padding: 25px;
+      }
+      
+      .card-icon {
+        font-size: 2rem;
+      }
+      
+      .card h3 {
+        font-size: 1.2rem;
+      }
+      
+      .sambutan-text h3 {
+        font-size: 1.5rem;
+      }
+      
+      .sambutan-text p {
+        font-size: 1rem;
       }
       
       .to-top {
-        width: 40px;
-        height: 40px;
-        font-size: 1rem;
+        width: 45px;
+        height: 45px;
+        font-size: 1.1rem;
+        bottom: 20px;
+        right: 20px;
+      }
+      
+      .footer-col h4 {
+        font-size: 1.1rem;
       }
     }
     
@@ -791,7 +966,7 @@
       }
       
       .btn {
-        padding: 8px 16px;
+        padding: 10px 18px;
         font-size: 0.9rem;
       }
       
@@ -799,19 +974,31 @@
         padding: 20px;
       }
       
+      .section-title {
+        font-size: 1.3rem;
+      }
+      
       .footer-col h4 {
         font-size: 1rem;
       }
       
       .footer-links a {
-        font-size: 0.85rem;
+        font-size: 0.9rem;
       }
     }
   </style>
 </head>
 <body>
+  <!-- Loading Screen -->
+  <div class="loading" id="loading">
+    <img src="logo.png" alt="Logo Desa Tungel" class="loading-logo">
+    <div class="loading-bar">
+      <div class="loading-progress" id="loadingProgress"></div>
+    </div>
+  </div>
+
   <!-- Header Section -->
-  <header>
+  <header id="header">
     <div class="container header-container">
       <div class="logo-container">
         <img src="logo.png" alt="Logo Desa Tungel">
@@ -842,8 +1029,12 @@
       <h2>Selamat Datang di Desa Tungel</h2>
       <p>Kecamatan Rikit Gaib, Kabupaten Gayo Lues — Website resmi pemerintah desa untuk informasi dan pelayanan masyarakat.</p>
       <div class="hero-btns">
-        <a href="#layanan" class="btn btn-primary">Layanan Desa</a>
-        <a href="#profil" class="btn btn-outline">Profil Desa</a>
+        <a href="#layanan" class="btn btn-primary">
+          <i class="fas fa-hand-pointer"></i> Layanan Desa
+        </a>
+        <a href="#profil" class="btn btn-outline">
+          <i class="fas fa-info-circle"></i> Profil Desa
+        </a>
       </div>
     </div>
   </section>
@@ -851,14 +1042,14 @@
   <!-- Highlight Card -->
   <div class="container highlight">
     <h3><i class="fas fa-info-circle"></i> Info Terkini Desa Tungel</h3>
-    <p>Website ini menjadi media resmi pemerintah desa untuk menyampaikan informasi, kebijakan, dan layanan kepada masyarakat. Kami berkomitmen untuk meningkatkan transparansi dan akuntabilitas melalui platform digital ini.</p>
+    <p>Website ini menjadi media resmi pemerintah desa untuk menyampaikan informasi, kebijakan, dan layanan kepada masyarakat. Kami berkomitmen untuk meningkatkan transparansi dan akuntabilitas melalui platform digital ini. Dapatkan informasi terbaru tentang program desa, pengumuman penting, dan layanan administrasi.</p>
   </div>
 
   <!-- Layanan Section -->
   <section class="section" id="layanan">
     <div class="container">
       <h2 class="section-title">Layanan Desa</h2>
-      <p class="section-subtitle">Berbagai layanan dan informasi yang dapat Anda akses melalui website ini</p>
+      <p class="section-subtitle">Berbagai layanan dan informasi yang dapat Anda akses melalui website ini untuk memudahkan interaksi dengan pemerintah desa</p>
       
       <div class="cards">
         <div class="card">
@@ -866,7 +1057,7 @@
             <i class="fas fa-landmark"></i>
           </div>
           <h3>Profil Desa</h3>
-          <p>Informasi lengkap tentang Desa Tungel meliputi sejarah, geografis, demografi, dan struktur pemerintahan.</p>
+          <p>Informasi lengkap tentang Desa Tungel meliputi sejarah, geografis, demografi, dan struktur pemerintahan. Temukan visi misi desa dan profil perangkat desa.</p>
           <a href="profil.html" class="card-link">Selengkapnya <i class="fas fa-arrow-right"></i></a>
         </div>
         
@@ -875,7 +1066,7 @@
             <i class="fas fa-database"></i>
           </div>
           <h3>Data & Statistik</h3>
-          <p>Data kependudukan, ekonomi, dan pembangunan desa yang selalu diperbarui secara berkala.</p>
+          <p>Data kependudukan, ekonomi, dan pembangunan desa yang selalu diperbarui secara berkala. Akses informasi statistik terpercaya tentang perkembangan desa.</p>
           <a href="data.html" class="card-link">Selengkapnya <i class="fas fa-arrow-right"></i></a>
         </div>
         
@@ -884,7 +1075,7 @@
             <i class="fas fa-images"></i>
           </div>
           <h3>Galeri Desa</h3>
-          <p>Dokumentasi kegiatan, potensi wisata, dan keindahan alam Desa Tungel dalam bentuk foto dan video.</p>
+          <p>Dokumentasi kegiatan, potensi wisata, dan keindahan alam Desa Tungel dalam bentuk foto dan video. Lihat perkembangan dan aktivitas desa terkini.</p>
           <a href="gallery.html" class="card-link">Selengkapnya <i class="fas fa-arrow-right"></i></a>
         </div>
         
@@ -893,7 +1084,7 @@
             <i class="fas fa-envelope"></i>
           </div>
           <h3>Layanan Online</h3>
-          <p>Ajukan permohonan surat secara online dan dapatkan informasi kontak perangkat desa.</p>
+          <p>Ajukan permohonan surat secara online dan dapatkan informasi kontak perangkat desa. Proses administrasi menjadi lebih mudah dan efisien.</p>
           <a href="kontak.html" class="card-link">Selengkapnya <i class="fas fa-arrow-right"></i></a>
         </div>
       </div>
@@ -911,6 +1102,7 @@
         <h3>Sambutan Pengulu</h3>
         <p>Assalamu'alaikum warahmatullahi wabarakatuh. Dengan segala kerendahan hati, saya menyambut baik kehadiran website resmi Desa Tungel ini. Platform digital ini kami hadirkan sebagai wujud komitmen pemerintah desa dalam meningkatkan transparansi, akuntabilitas, dan pelayanan kepada masyarakat.</p>
         <p>Melalui website ini, kami berharap dapat mempermudah akses informasi bagi seluruh warga Desa Tungel dan masyarakat luas. Kami terbuka terhadap segala masukan dan saran untuk perbaikan pelayanan kami. Mari bersama-sama membangun Desa Tungel yang lebih maju dan sejahtera.</p>
+        <p>Kami mengundang seluruh masyarakat untuk berpartisipasi aktif dalam pembangunan desa. Semoga website ini dapat menjadi jembatan komunikasi yang efektif antara pemerintah desa dengan masyarakat.</p>
         
         <div class="sambutan-signature">
           <strong>Said Tarmizi</strong>
@@ -926,12 +1118,12 @@
       <div class="footer-container">
         <div class="footer-col">
           <h4>Tentang Desa Tungel</h4>
-          <p>Desa Tungel merupakan salah satu desa di Kecamatan Rikit Gaib, Kabupaten Gayo Lues yang memiliki potensi besar di bidang pertanian dan budaya.</p>
+          <p>Desa Tungel merupakan salah satu desa di Kecamatan Rikit Gaib, Kabupaten Gayo Lues yang memiliki potensi besar di bidang pertanian dan budaya. Desa ini terkenal dengan keindahan alamnya dan keramahan warganya.</p>
           <div class="social-links">
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-youtube"></i></a>
-            <a href="#"><i class="fab fa-whatsapp"></i></a>
+            <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="#" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
           </div>
         </div>
         
@@ -943,6 +1135,17 @@
             <li><a href="data.html"><i class="fas fa-chevron-right"></i> Data & Statistik</a></li>
             <li><a href="gallery.html"><i class="fas fa-chevron-right"></i> Galeri</a></li>
             <li><a href="kontak.html"><i class="fas fa-chevron-right"></i> Kontak</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-col">
+          <h4>Layanan Desa</h4>
+          <ul class="footer-links">
+            <li><a href="#"><i class="fas fa-chevron-right"></i> Administrasi Kependudukan</a></li>
+            <li><a href="#"><i class="fas fa-chevron-right"></i> Surat Pengantar</a></li>
+            <li><a href="#"><i class="fas fa-chevron-right"></i> Laporan Pengaduan</a></li>
+            <li><a href="#"><i class="fas fa-chevron-right"></i> Informasi Program</a></li>
+            <li><a href="#"><i class="fas fa-chevron-right"></i> Berita Desa</a></li>
           </ul>
         </div>
         
@@ -964,14 +1167,36 @@
   </footer>
 
   <!-- Back to Top Button -->
-  <button class="to-top" id="toTop">
+  <button class="to-top" id="toTop" title="Kembali ke atas">
     <i class="fas fa-arrow-up"></i>
   </button>
 
   <script>
+    // Loading Animation
+    const loading = document.getElementById('loading');
+    const loadingProgress = document.getElementById('loadingProgress');
+    
+    // Simulate loading progress
+    let progress = 0;
+    const loadingInterval = setInterval(() => {
+      progress += Math.random() * 15;
+      loadingProgress.style.width = `${Math.min(progress, 100)}%`;
+      
+      if (progress >= 100) {
+        clearInterval(loadingInterval);
+        setTimeout(() => {
+          loading.style.opacity = '0';
+          setTimeout(() => {
+            loading.style.display = 'none';
+          }, 500);
+        }, 300);
+      }
+    }, 200);
+    
     // Mobile Menu Toggle
     const mobileMenuBtn = document.getElementById('mobileMenuBtn');
     const navLinks = document.querySelector('.nav-links');
+    const header = document.getElementById('header');
     
     mobileMenuBtn.addEventListener('click', () => {
       navLinks.classList.toggle('active');
@@ -1006,9 +1231,36 @@
       });
     });
     
+    // Header scroll effect
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+    
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 80,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+    
     // Animation on scroll
     const animateOnScroll = () => {
-      const elements = document.querySelectorAll('.card, .section-title, .section-subtitle');
+      const elements = document.querySelectorAll('.card, .section-title, .section-subtitle, .sambutan-img, .sambutan-text');
       
       elements.forEach(element => {
         const elementPosition = element.getBoundingClientRect().top;
@@ -1022,6 +1274,19 @@
     
     window.addEventListener('scroll', animateOnScroll);
     window.addEventListener('load', animateOnScroll);
+    
+    // Card hover effect enhancement
+    const cards = document.querySelectorAll('.card');
+    cards.forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        card.style.setProperty('--mouse-x', `${x}px`);
+        card.style.setProperty('--mouse-y', `${y}px`);
+      });
+    });
   </script>
 </body>
 </html>
